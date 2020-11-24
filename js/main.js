@@ -51,7 +51,7 @@ function parseInput(input) {
 
 function displayWeather(weatherData) {
 	document.querySelector("h1").textContent = `${weatherData.name}`;
-	document.getElementById("headerImage").innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="${weatherData.weather[0].main}">`;
+	document.getElementById("headerImage").innerHTML = `<img src="https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="${weatherData.weather[0].main}">`;
 	document.getElementById("currentTemp").textContent = `${convertTemp(weatherData.main.temp)} F`;
 	document.getElementById("feelsLike").textContent = `${convertTemp(weatherData.main.feels_like)} F`;
 	document.getElementById("windSpeed").textContent = `${weatherData.wind.speed} m/s`;
