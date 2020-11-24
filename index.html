@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="dist/css/style.min.css">
+	<script src="js/main.js" type="module"></script>
+	<title>Matt's Weather App</title>
+</head>
+<body>
+	<section>
+		<form id="submissionForm">
+			<label for="textBox">Enter a city and state, separated by a comma, to check the weather:</label>
+			<input type="text" id="textBox" size=40 autocomplete="on" placeholder="  enter city, state to check the weather">
+			<button id="submitButton" class="button" title="Submit city/state information" tabindex="0">GO</button>
+		</form>
+		<header>
+			<span id="headerImage"></span>
+			<h1></h1>
+			
+		</header>
+		
+		<ul>
+			<li id="currentTempLabel">Temperature: </li>
+			<li id="currentTemp"></li>
+			<li id="feelsLikeLabel">Feels Like: </li>
+			<li id="feelsLike"></li>
+			<li id="conditionsLabel">Conditions: </li>
+			<li id="conditions"></li>
+			<li id="windSpeedLabel">Wind Speed: </li>
+			<li id="windSpeed"></li>
+			<li id="humidityLabel">Humidity: </li>
+			<li id="humidity"></li>
+			<button id="setDefaultButton" class="button" title="Save the current city as default" tabindex="0">Set Default</button>
+		</ul>
+	</section>
+</body>
+</html>
