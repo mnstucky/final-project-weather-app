@@ -17,7 +17,7 @@ async function applyGeolocationData(position) {
 }
 
 async function loadDefault() {
-  if (localStorage.getItem("default")) {
+  if (JSON.parse(localStorage.getItem("default"))) {
     const weatherData = JSON.parse(localStorage.getItem("default"));
     displayWeather(weatherData);
     const forecastData = await getForecast(weatherData);
