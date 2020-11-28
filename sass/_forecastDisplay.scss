@@ -8,34 +8,14 @@
       list-style: none;
     }
 
-    #day1Label {
+    .forecastLabel {
       display: flex;
       justify-content: flex-start;
       align-items: center;
     }
-
-    #day2Label {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    #day3Label {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    #day4Label {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    #day5Label {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
+	
+	.forecastTemp {
+		text-indent: .3rem;
+	}
   }
 }
