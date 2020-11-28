@@ -14,6 +14,7 @@ async function applyGeolocationData(position) {
   displayWeather(weatherData);
   const forecastData = await getForecast(weatherData);
   displayForecast(forecastData);
+  localStorage.setItem("current", JSON.stringify(weatherData));
 }
 
 async function loadDefault() {
