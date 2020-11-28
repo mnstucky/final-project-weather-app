@@ -48,9 +48,9 @@ function initApp() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(applyGeolocationData);
       } else {
-        const textBox = document.getElementById("textBox");
+		const textBox = document.getElementById("textBox");
+		textBox.placeholder = "  location data unavailable; please try again";
         textBox.value = "";
-        textBox.placeholder = "  location data unavailable; please try again";
       }
     });
 }
@@ -58,16 +58,17 @@ function initApp() {
 async function processInput(input) {
   const inputArray = parseInput(input);
   const textBox = document.getElementById("textBox");
-  textBox.value = "";
   const weatherData = await getWeatherDataByCity(inputArray);
   if (weatherData.message === "city not found") {
-    textBox.placeholder = "  city not found; please try again";
+	textBox.placeholder = "  city not found; please try again";
+	textBox.value = "";
     return;
   }
   displayWeather(weatherData);
   localStorage.setItem("current", JSON.stringify(weatherData));
   const forecastData = await getForecast(weatherData);
   displayForecast(forecastData);
+  textBox.value = "";
 }
 
 async function getWeatherDataByCity(inputArray) {
