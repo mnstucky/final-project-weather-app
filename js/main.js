@@ -17,13 +17,13 @@ async function applyGeolocationData(position) {
 }
 
 async function loadDefault() {
-  if (localStorage.getItem("default") === null) {
-    const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
+  if (localStorage.getItem("default")) {
+    const weatherData = JSON.parse(localStorage.getItem("default"));
     displayWeather(weatherData);
     const forecastData = await getForecast(weatherData);
-    displayForecast(forecastData);
+	displayForecast(forecastData);
   } else {
-    const weatherData = JSON.parse(localStorage.getItem("default"));
+	const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
     displayWeather(weatherData);
     const forecastData = await getForecast(weatherData);
     displayForecast(forecastData);
