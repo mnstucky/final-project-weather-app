@@ -5,7 +5,7 @@ document.addEventListener("readystatechange", (e) => {
   }
 });
 
-async function applyGeolocationDefault(position) {
+async function applyGeolocationData(position) {
   const weatherData = await getWeatherDataByCoords([
     position.coords.latitude,
     position.coords.longitude,
@@ -17,16 +17,11 @@ async function applyGeolocationDefault(position) {
 }
 
 async function loadDefault() {
-  localStorage.clear();
   if (localStorage.getItem("default") === null) {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(applyGeolocationDefault);
-    } else {
       const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
       displayWeather(weatherData);
       const forecastData = await getForecast(weatherData);
       displayForecast(forecastData);
-    }
   } else {
     const weatherData = JSON.parse(localStorage.getItem("default"));
     displayWeather(weatherData);
@@ -44,6 +39,15 @@ function initApp() {
   });
   document.getElementById("setDefaultButton").addEventListener("click", (e) => {
     localStorage.setItem("default", localStorage.getItem("current"));
+  });
+  document.getElementById("useCurrentLocationButton").addEventListener("click", (e) => {
+    if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(applyGeolocationData);
+	  } else {
+		const textBox = document.getElementById("textBox");
+		textBox.value = "";
+		textBox.placeholder = "  location data unavailable; please try again";
+	  }
   });
 }
 
