@@ -1,108 +1,106 @@
-section {
+#weatherApp {
+  header {
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-	header {
-		height: 50px;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-	}
+  #resultsDisplay {
+    display: grid;
+    grid-template-columns: 50% 30% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
 
-	ul {
-		display: grid;
-		grid-template-columns: 50% 30% 20%;
-		grid-template-rows: 20% 20% 20% 20% 20%;
+    li {
+      list-style: none;
+    }
 
-		li {
-			list-style: none;
-		}
+    #currentTempLabel {
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 1;
+      grid-row-end: 1;
+    }
 
-		#currentTempLabel {
-			grid-column-start: 1;
-			grid-column-end: 1;
-			grid-row-start: 1;
-			grid-row-end: 1;
-		}
+    #feelsLikeLabel {
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 2;
+      grid-row-end: 2;
+    }
 
-		#feelsLikeLabel {
-			grid-column-start: 1;
-			grid-column-end: 1;
-			grid-row-start: 2;
-			grid-row-end: 2;
-		}
+    #conditionsLabel {
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 3;
+      grid-row-end: 3;
+    }
 
-		#conditionsLabel {
-			grid-column-start: 1;
-			grid-column-end: 1;
-			grid-row-start: 3;
-			grid-row-end: 3;
-		}
+    #windSpeedLabel {
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 4;
+      grid-row-end: 4;
+    }
 
-		#windSpeedLabel {
-			grid-column-start: 1;
-			grid-column-end: 1;
-			grid-row-start: 4;
-			grid-row-end: 4;
-		}
+    #humidityLabel {
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 5;
+      grid-row-end: 5;
+    }
 
-		#humidityLabel {
-			grid-column-start: 1;
-			grid-column-end: 1;
-			grid-row-start: 5;
-			grid-row-end: 5;
-		}
+    #currentTemp {
+      grid-column-start: 2;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 1;
+    }
 
-		#currentTemp {
-			grid-column-start: 2;
-			grid-column-end: 2;
-			grid-row-start: 1;
-			grid-row-end: 1;
-		}
+    #feelsLike {
+      grid-column-start: 2;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 2;
+    }
 
-		#feelsLike {
-			grid-column-start: 2;
-			grid-column-end: 2;
-			grid-row-start: 2;
-			grid-row-end: 2;
-		}
+    #conditions {
+      grid-column-start: 2;
+      grid-column-end: 2;
+      grid-row-start: 3;
+      grid-row-end: 3;
+    }
 
-		#conditions {
-			grid-column-start: 2;
-			grid-column-end: 2;
-			grid-row-start: 3;
-			grid-row-end: 3;
-		}
+    #windSpeed {
+      grid-column-start: 2;
+      grid-column-end: 2;
+      grid-row-start: 4;
+      grid-row-end: 4;
+    }
 
-		#windSpeed {
-			grid-column-start: 2;
-			grid-column-end: 2;
-			grid-row-start: 4;
-			grid-row-end: 4;
-		}
+    #humidity {
+      grid-column-start: 2;
+      grid-column-end: 2;
+      grid-row-start: 5;
+      grid-row-end: 5;
+    }
 
-		#humidity {
-			grid-column-start: 2;
-			grid-column-end: 2;
-			grid-row-start: 5;
-			grid-row-end: 5;
-		}
+    #setDefaultButton {
+      grid-column-start: 3;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      font-weight: bold;
+      padding: 5px;
+    }
 
-		#setDefaultButton {
-			grid-column-start: 3;
-			grid-column-end: 3;
-			grid-row-start: 1;
-			font-weight: bold;
-			padding: 5px;
-		}
+    #setDefaultButton:hover {
+      cursor: pointer;
+    }
 
-		#setDefaultButton:hover {
-			cursor: pointer;
-		}
-	
-		#setDefaultButton:hover,
-		#setDefaultButton:focus {
-			border: 2px solid $font-color;
-			transition: border 1s;
-		}
-	}
-
+    #setDefaultButton:hover,
+    #setDefaultButton:focus {
+      border: 2px solid $font-color;
+      transition: border 1s;
+    }
+  }
 }

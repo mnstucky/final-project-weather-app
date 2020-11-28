@@ -4,42 +4,50 @@ $section-color: hsl(228, 56%, 26%);
 $accent-color: rgb(199, 113, 0);
 
 @mixin mp($size) {
-	@media only screen and (min-width: $size) {
-		@content;
-	}
+  @media only screen and (min-width: $size) {
+    @content;
+  }
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
-	font-size: 16px;
-	font-family: "Montserrat", sans-serif;
-	color: $font-color;
-	width: 100%;
-	min-height: 100%;
-	@include mp(768px) {
-		font-size: 22px;
-	}
+html,
+body {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: $font-color;
+  width: 100%;
+  min-height: 100%;
+  @include mp(768px) {
+    font-size: 22px;
+  }
 }
 
 body {
-	padding: 10px;
-	background-color: $background-color;
+  padding: 10px;
+  background-color: $background-color;
 }
 
-section {
-	background-color: $section-color;
-	width: 95%;
-	@include mp(768px) {
-		width: 90%;
-	}
-	max-width: 700px;
-	margin: auto;
-	border-radius: 10px;
-	min-height: 60vh;
-	padding: 0.75rem;
+#weatherApp {
+  background-color: $section-color;
+  width: 95%;
+  @include mp(768px) {
+    width: 90%;
+  }
+  max-width: 700px;
+  margin: auto;
+  border-radius: 10px;
+  min-height: 60vh;
+  padding: 0.75rem;
+
+  hr {
+    height: 3px;
+    margin-top: 10px;
+    background-color: $accent-color;
+    border: none;
+  }
 }

@@ -1,50 +1,47 @@
-section {
+#weatherApp {
+  button {
+    min-width: 48px;
+    min-height: 40px;
+    background-color: $accent-color;
+    color: $background-color;
+    border-radius: 10px;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+  }
 
-	button {
-		min-width: 48px;
-		min-height: 40px;
-		background-color: $accent-color;
-		color: $background-color;
-		border-radius: 10px;
-		border: none;
-		font-family: "Montserrat", sans-serif;
-	}
+  #submitButton:hover {
+    cursor: pointer;
+  }
 
-	#submitButton:hover {
-		cursor: pointer;
-	}
+  #submitButton:hover,
+  #submitButton:focus {
+    border: 2px solid $font-color;
+    transition: border 1s;
+  }
 
-	#submitButton:hover,
-	#submitButton:focus {
-		border: 2px solid $font-color;
-		transition: border 1s;
-	}
+  form {
+    display: flex;
+    justify-content: center;
+    column-gap: 3px;
+    width: 100%;
+    min-height: 40px;
+    height: 2rem;
 
-	form {
+    #textBox {
+      border-radius: 10px;
+      border: 0;
+      font-family: "Montserrat", sans-serif;
+      width: 85%;
+    }
 
-		display: flex;
-		justify-content: center;
-		column-gap: 3px;
-		width: 100%;
-		min-height: 40px;
-		height: 2rem;
+    #submitButton {
+      font-weight: bold;
+      width: 15%;
+    }
 
-		#textBox {
-			border-radius: 10px;
-			border: 0;
-			font-family: "Montserrat", sans-serif;
-			width: 85%;
-		}
-
-		#submitButton {
-			font-weight: bold;
-			width: 15%;
-		}
-
-		label {
-			position: absolute;
-			left: -10000px;
-		}
-	}
-
+    label {
+      position: absolute;
+      left: -10000px;
+    }
+  }
 }
