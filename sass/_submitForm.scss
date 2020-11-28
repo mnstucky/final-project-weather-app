@@ -1,13 +1,13 @@
 #weatherApp {
   button {
     min-width: 48px;
-	min-height: 40px;
+    min-height: 40px;
     background-color: $accent-color;
     color: $background-color;
     border-radius: 10px;
     border: none;
-	font-family: "Montserrat", sans-serif;
-	width: 100%;
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
   }
 
   #submitButton:hover {

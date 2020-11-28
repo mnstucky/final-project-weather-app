@@ -88,13 +88,13 @@
     #setDefaultButtonContainer {
       grid-column-start: 3;
       grid-column-end: 3;
-	  grid-row-start: 1;
-	}
-	
-	#setDefaultButton {
-		font-weight: bold;
-		margin-top: 42px;
-	}
+      grid-row-start: 1;
+    }
+
+    #setDefaultButton {
+      font-weight: bold;
+      margin-top: 42px;
+    }
 
     #setDefaultButton:hover {
       cursor: pointer;
@@ -104,27 +104,27 @@
     #setDefaultButton:focus {
       border: 2px solid $font-color;
       transition: border 1s;
-	}
-	
-	#useCurrentLocationButtonContainer {
-		grid-column-start: 3;
-		grid-column-end: 3;
-		grid-row-start: 1;
-	  }
+    }
 
-	  #useCurrentLocationButton {
-		font-weight: bold;
-		padding: 5px;
-	  }
-  
-	  #useCurrentLocationButton:hover {
-		cursor: pointer;
-	  }
-  
-	  #useCurrentLocationButton:hover,
-	  #useCurrentLocationButton:focus {
-		border: 2px solid $font-color;
-		transition: border 1s;
-	  }
+    #useCurrentLocationButtonContainer {
+      grid-column-start: 3;
+      grid-column-end: 3;
+      grid-row-start: 1;
+    }
+
+    #useCurrentLocationButton {
+      font-weight: bold;
+      padding: 5px;
+    }
+
+    #useCurrentLocationButton:hover {
+      cursor: pointer;
+    }
+
+    #useCurrentLocationButton:hover,
+    #useCurrentLocationButton:focus {
+      border: 2px solid $font-color;
+      transition: border 1s;
+    }
   }
 }

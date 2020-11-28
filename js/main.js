@@ -18,10 +18,10 @@ async function applyGeolocationData(position) {
 
 async function loadDefault() {
   if (localStorage.getItem("default") === null) {
-      const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
-      displayWeather(weatherData);
-      const forecastData = await getForecast(weatherData);
-      displayForecast(forecastData);
+    const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
+    displayWeather(weatherData);
+    const forecastData = await getForecast(weatherData);
+    displayForecast(forecastData);
   } else {
     const weatherData = JSON.parse(localStorage.getItem("default"));
     displayWeather(weatherData);
@@ -40,15 +40,17 @@ function initApp() {
   document.getElementById("setDefaultButton").addEventListener("click", (e) => {
     localStorage.setItem("default", localStorage.getItem("current"));
   });
-  document.getElementById("useCurrentLocationButton").addEventListener("click", (e) => {
-    if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(applyGeolocationData);
-	  } else {
-		const textBox = document.getElementById("textBox");
-		textBox.value = "";
-		textBox.placeholder = "  location data unavailable; please try again";
-	  }
-  });
+  document
+    .getElementById("useCurrentLocationButton")
+    .addEventListener("click", (e) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(applyGeolocationData);
+      } else {
+        const textBox = document.getElementById("textBox");
+        textBox.value = "";
+        textBox.placeholder = "  location data unavailable; please try again";
+      }
+    });
 }
 
 async function processInput(input) {
