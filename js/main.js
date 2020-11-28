@@ -26,7 +26,8 @@ async function loadDefault() {
 	const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
     displayWeather(weatherData);
     const forecastData = await getForecast(weatherData);
-    displayForecast(forecastData);
+	displayForecast(forecastData);
+	localStorage.setItem("current", JSON.stringify(weatherData));
   }
 }
 
