@@ -84,7 +84,7 @@ async function getForecast(weatherData) {
 }
 
 function parseInput(input) {
-  return input.split(/[ ,]/g).map((value) => value.trim());
+  return input.split(",").map((value) => value.trim());
 }
 
 function displayWeather(weatherData) {
