@@ -22,13 +22,13 @@ async function loadDefault() {
     const weatherData = JSON.parse(localStorage.getItem("default"));
     displayWeather(weatherData);
     const forecastData = await getForecast(weatherData);
-	displayForecast(forecastData);
+    displayForecast(forecastData);
   } else {
-	const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
+    const weatherData = await getWeatherDataByCity(["Hays", "Kansas"]);
     displayWeather(weatherData);
     const forecastData = await getForecast(weatherData);
-	displayForecast(forecastData);
-	localStorage.setItem("current", JSON.stringify(weatherData));
+    displayForecast(forecastData);
+    localStorage.setItem("current", JSON.stringify(weatherData));
   }
 }
 
@@ -48,8 +48,8 @@ function initApp() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(applyGeolocationData);
       } else {
-		const textBox = document.getElementById("textBox");
-		textBox.placeholder = "  location data unavailable; please try again";
+        const textBox = document.getElementById("textBox");
+        textBox.placeholder = "  location data unavailable; please try again";
         textBox.value = "";
       }
     });
@@ -60,8 +60,8 @@ async function processInput(input) {
   const textBox = document.getElementById("textBox");
   const weatherData = await getWeatherDataByCity(inputArray);
   if (weatherData.message === "city not found") {
-	textBox.placeholder = "  city not found; please try again";
-	textBox.value = "";
+    textBox.placeholder = "  city not found; please try again";
+    textBox.value = "";
     return;
   }
   displayWeather(weatherData);
@@ -93,7 +93,15 @@ async function getForecast(weatherData) {
 }
 
 function parseInput(input) {
-  return input.split(",").map((value) => value.trim());
+  const parsedInput = input.split(",").map((value) => value.trim());
+  if (parsedInput.length === 1) {
+    return parsedInput;
+  } else {
+    if (parsedInput[1].length === 2) {
+      parsedInput[1] = convertStateAbbreviation(parsedInput[1]);
+    }
+    return parsedInput;
+  }
 }
 
 function displayWeather(weatherData) {
@@ -158,5 +166,112 @@ function convertDayOfTheWeek(date) {
       return "Fri";
     case 6:
       return "Sat";
+  }
+}
+
+function convertStateAbbreviation(state) {
+  switch (state.toUpperCase()) {
+    case "AL":
+      return "alabama";
+    case "AK":
+      return "alaska";
+    case "AZ":
+      return "arizona";
+    case "AR":
+      return "arkansas";
+    case "CA":
+      return "california";
+    case "CO":
+      return "colorado";
+    case "CT":
+      return "connecticut";
+    case "DE":
+      return "delaware";
+    case "FL":
+      return "florida";
+    case "GA":
+      return "georgia";
+    case "HI":
+      return "hawaii";
+    case "ID":
+      return "idaho";
+    case "IL":
+      return "illinois";
+    case "IN":
+      return "indiana";
+    case "IA":
+      return "iowa";
+    case "KS":
+      return "kansas";
+    case "KY":
+      return "kentucky";
+    case "LA":
+      return "louisiana";
+    case "ME":
+      return "maine";
+    case "MD":
+      return "maryland";
+    case "MA":
+      return "massachusetts";
+    case "MI":
+      return "michigan";
+    case "MN":
+      return "minnesota";
+    case "MS":
+      return "mississippi";
+    case "MO":
+      return "missouri";
+    case "MT":
+      return "montana";
+    case "NE":
+      return "nebraska";
+    case "NV":
+      return "nevada";
+    case "NH":
+      return "new hampshire";
+    case "NJ":
+      return "new jersey";
+    case "NM":
+      return "new mexico";
+    case "NY":
+      return "new york";
+    case "NC":
+      return "north carolina";
+    case "ND":
+      return "north dakota";
+    case "OH":
+      return "ohio";
+    case "OK":
+      return "oklahoma";
+    case "OR":
+      return "oregon";
+    case "PA":
+      return "pennsylvania";
+    case "RI":
+      return "rhode island";
+    case "SC":
+      return "south carolina";
+    case "SD":
+      return "south dakota";
+    case "TN":
+      return "tennessee";
+    case "TX":
+      return "texas";
+    case "UT":
+      return "utah";
+    case "VT":
+      return "vermont";
+    case "VA":
+      return "virginia";
+    case "WA":
+      return "washington";
+    case "WV":
+      return "west virginia";
+    case "WI":
+      return "wisconsin";
+    case "WY":
+      return "wyoming";
+    case "DC":
+      return "district of columbia";
   }
 }
