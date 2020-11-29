@@ -56,9 +56,15 @@ function initApp() {
 }
 
 async function processInput(input) {
-  const inputArray = parseInput(input);
   const textBox = document.getElementById("textBox");
-  const weatherData = await getWeatherDataByCity(inputArray);
+  let weatherData;
+  if (/\d{5}/.test(input.substring(0, 5))) {
+    const zip = input.substring(0, 5);
+    weatherData = await getWeatherDataByZip(zip);
+  } else {
+    const inputArray = parseInput(input);
+    weatherData = await getWeatherDataByCity(inputArray);
+  }
   if (weatherData.message === "city not found") {
     textBox.placeholder = "  city not found; please try again";
     textBox.value = "";
@@ -85,6 +91,13 @@ async function getWeatherDataByCoords(coords) {
   return await data.json();
 }
 
+async function getWeatherDataByZip(zip) {
+  const data = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=65ce4c1ce18c9e2523ab83bc703900ca`
+  );
+  return await data.json();
+}
+
 async function getForecast(weatherData) {
   const data = await fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&appid=65ce4c1ce18c9e2523ab83bc703900ca`
@@ -93,15 +106,138 @@ async function getForecast(weatherData) {
 }
 
 function parseInput(input) {
-  const parsedInput = input.split(",").map((value) => value.trim());
-  if (parsedInput.length === 1) {
-    return parsedInput;
-  } else {
-    if (parsedInput[1].length === 2) {
-      parsedInput[1] = convertStateAbbreviation(parsedInput[1]);
+  const states = [
+    "alabama",
+    "alaska",
+    "arizona",
+    "arkansas",
+    "california",
+    "colorado",
+    "connecticut",
+    "delaware",
+    "florida",
+    "georgia",
+    "hawaii",
+    "idaho",
+    "illinois",
+    "indiana",
+    "iowa",
+    "kansas",
+    "kentucky",
+    "louisiana",
+    "maine",
+    "maryland",
+    "massachusetts",
+    "michigan",
+    "minnesota",
+    "mississippi",
+    "missouri",
+    "montana",
+    "nebraska",
+    "nevada",
+    "new hampshire",
+    "new jersey",
+    "new mexico",
+    "new york",
+    "north carolina",
+    "north dakota",
+    "ohio",
+    "oklahoma",
+    "oregon",
+    "pennsylvania",
+    "rhode island",
+    "south carolina",
+    "south dakota",
+    "tennessee",
+    "texas",
+    "utah",
+    "vermont",
+    "west virginia",
+    "virginia",
+    "washington",
+    "wisconsin",
+    "wyoming",
+    "district of columbia",
+    "ak",
+    "al",
+    "ar",
+    "as",
+    "az",
+    "ca",
+    "co",
+    "ct",
+    "dc",
+    "de",
+    "fl",
+    "ga",
+    "gu",
+    "hi",
+    "ia",
+    "id",
+    "il",
+    "in",
+    "ks",
+    "ky",
+    "la",
+    "ma",
+    "md",
+    "me",
+    "mi",
+    "mn",
+    "mo",
+    "mp",
+    "ms",
+    "mt",
+    "nc",
+    "nd",
+    "ne",
+    "nh",
+    "nj",
+    "nm",
+    "nv",
+    "ny",
+    "oh",
+    "ok",
+    "or",
+    "pa",
+    "pr",
+    "ri",
+    "sc",
+    "sd",
+    "tn",
+    "tx",
+    "um",
+    "ut",
+    "va",
+    "vi",
+    "vt",
+    "wa",
+    "wi",
+    "wv",
+    "wy",
+  ];
+  const parsedInput = [];
+  for (let i = 0; i < states.length; i += 1) {
+	let state = states[i];
+	if (input.trim().toLowerCase().endsWith(state)) {
+      parsedInput[0] = input
+        .substring(0, input.toLowerCase().indexOf(state))
+        .trim();
+      if (parsedInput[0].endsWith(",")) {
+        parsedInput[0] = parsedInput[0].substring(0, parsedInput[0].length - 1);
+      }
+      if (state.length === 2) {
+        parsedInput[1] = convertStateAbbreviation(state);
+      } else {
+        parsedInput[1] = state;
+	  }
+	  break;
     }
-    return parsedInput;
   }
+  if (parsedInput.length === 0) {
+    parsedInput[0] = input.trim();
+  }
+  return parsedInput;
 }
 
 function displayWeather(weatherData) {
