@@ -218,10 +218,10 @@ function parseInput(input) {
   ];
   const parsedInput = [];
   for (let i = 0; i < states.length; i += 1) {
-	let state = states[i];
-	if (input.trim().toLowerCase().endsWith(state)) {
+    let state = states[i];
+    if (input.trim().toLowerCase().endsWith(state)) {
       parsedInput[0] = input
-        .substring(0, input.toLowerCase().indexOf(state))
+        .substring(0, input.toLowerCase().lastIndexOf(state))
         .trim();
       if (parsedInput[0].endsWith(",")) {
         parsedInput[0] = parsedInput[0].substring(0, parsedInput[0].length - 1);
@@ -230,12 +230,16 @@ function parseInput(input) {
         parsedInput[1] = convertStateAbbreviation(state);
       } else {
         parsedInput[1] = state;
-	  }
-	  break;
+      }
+      break;
     }
   }
   if (parsedInput.length === 0) {
     parsedInput[0] = input.trim();
+  }
+  if (parsedInput[0].length === 0) {
+    parsedInput[0] = input.trim();
+    parsedInput[1] = "";
   }
   return parsedInput;
 }
