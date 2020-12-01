@@ -10,7 +10,6 @@ async function applyGeolocationData(position) {
     position.coords.latitude,
     position.coords.longitude,
   ]);
-  console.log(position.coords);
   displayWeather(weatherData);
   const forecastData = await getForecast(weatherData);
   displayForecast(forecastData);
